@@ -9,7 +9,7 @@
 
 # Use the dev image to build and install dependencies.
 # The builder stage is also used directly in development (see compose.yaml).
-FROM dhi.io/python:3.12-dev AS builder
+FROM dhi.io/python:3.12-dev@sha256:46650727cce97abb5fbe78e5460efef5104786ead76c612caa9761881e26d6b0 AS builder
 
 WORKDIR /app
 
@@ -35,7 +35,7 @@ CMD ["/venv/bin/python3", "-m", "uvicorn", "app:app", "--host=0.0.0.0", "--port=
 
 
 # Use the minimal runtime image for production. It runs as nonroot by default.
-FROM dhi.io/python:3.12
+FROM dhi.io/python:3.12@sha256:f94a659e449ef119bb13fcce52c16636fd29ad7b82d72f176966e3a926695d53
 
 WORKDIR /app
 
